@@ -1,10 +1,18 @@
 public class Customer {
     private String customerName;
+    private int customerAge;
     private double wallet;
 
     public Customer(String customerName, double wallet){
         this.customerName = customerName;
         this.wallet = wallet;
+    }
+
+    public void setCustomerAge(int age){
+        this.customerAge = age;
+    }
+    public int getCustomerAge(){
+        return this.customerAge;
     }
 
     public String getCustomerName() {
@@ -24,9 +32,6 @@ public class Customer {
     }
 
     public boolean canAfford(double amount){
-        if (this.wallet - amount >= 0){
-            return true;
-        }
-        else return false;
+        return (this.wallet - amount >= 0);
     }
 }

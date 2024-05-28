@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class TravelAgent {
     private String agencyName;
-    private ArrayList<IBookable> bookable;
 
     public TravelAgent(String agencyName) {
         this.agencyName = agencyName;
