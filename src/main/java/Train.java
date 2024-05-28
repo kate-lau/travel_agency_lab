@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Train implements IBookable{
+public abstract class Train implements IBookable {
     private String trainName;
     private double price;
     private int capacity;
@@ -27,20 +27,21 @@ public abstract class Train implements IBookable{
     // MORE METHODS
 
     public boolean hasCapacity(){
-        if (this.getCapacity() >= 0){
+        if (this.getCapacity() > 0){
             return true;
         }
        return false;
     }
 
     public void book(Customer customer){
-        if (customer.canAfford() == true && hasCapacity() == true){
-            // add customer to booking
+        if (customer.canAfford(price) && hasCapacity()){
             this.capacity = this.capacity - 1;
+            customer.payment(price);
         }
     }
 
-    public void cancel(){
-
+    public void cancel(Customer customer){
+        customer.refund(price);
+        capacity++;
     }
 }

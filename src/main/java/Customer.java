@@ -7,8 +7,20 @@ public class Customer {
         this.wallet = wallet;
     }
 
+    public String getCustomerName() {
+        return this.customerName;
+    }
+
+    public double getWallet() {
+        return wallet;
+    }
+
     public void payment(double amount){
         this.wallet = wallet - amount;
+    }
+
+    public void refund(double amount) {
+        this.wallet += amount;
     }
 
     public boolean canAfford(double amount){
