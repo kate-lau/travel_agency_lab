@@ -99,14 +99,14 @@ public class TravelAgentTest {
     public void canBookBasketball() {
         travelAgent.makeBooking(customer, basketball);
         travelAgent.makeBooking(customer2, basketball);
-        assertThat(basketball.getCapacity()).isEqualTo(0);
+        assertThat(basketball.getParticipantsSize()).isEqualTo(2);
     }
 
     @Test
     public void cannotBookBasketballNoMoney() {
         travelAgent.makeBooking(customer, basketball);
         travelAgent.makeBooking(customer4, basketball);
-        assertThat(basketball.getCapacity()).isEqualTo(1);
+        assertThat(basketball.getParticipantsSize()).isEqualTo(1);
     }
 
     @Test
@@ -114,21 +114,21 @@ public class TravelAgentTest {
         travelAgent.makeBooking(customer, basketball);
         travelAgent.makeBooking(customer2, basketball);
         travelAgent.cancelBooking(customer2, basketball);
-        assertThat(basketball.getCapacity()).isEqualTo(1);
+        assertThat(basketball.getParticipantsSize()).isEqualTo(1);
     }
 
     @Test
     public void canBookBungee() {
         travelAgent.makeBooking(customer, bungee);
         travelAgent.makeBooking(customer2, bungee);
-        assertThat(bungee.getCapacity()).isEqualTo(0);
+        assertThat(bungee.getParticipantsSize()).isEqualTo(2);
     }
 
     @Test
     public void cannotBookBungeeNoMoney() {
         travelAgent.makeBooking(customer, bungee);
         travelAgent.makeBooking(customer4, bungee);
-        assertThat(bungee.getCapacity()).isEqualTo(1);
+        assertThat(bungee.getParticipantsSize()).isEqualTo(1);
     }
 
     @Test
@@ -136,7 +136,7 @@ public class TravelAgentTest {
         travelAgent.makeBooking(customer, bungee);
         travelAgent.makeBooking(customer2, bungee);
         travelAgent.cancelBooking(customer2, bungee);
-        assertThat(bungee.getCapacity()).isEqualTo(1);
+        assertThat(bungee.getParticipantsSize()).isEqualTo(1);
     }
 
     @Test

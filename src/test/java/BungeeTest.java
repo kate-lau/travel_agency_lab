@@ -27,14 +27,14 @@ public class BungeeTest {
     public void canBookBungee() {
         bungee.book(customer);
         bungee.book(customer2);
-        assertThat(bungee.getCapacity()).isEqualTo(0);
+        assertThat(bungee.getParticipantsSize()).isEqualTo(2);
     }
 
     @Test
     public void cannotBookBungeeNoMoney() {
         bungee.book(customer);
         bungee.book(customer3);
-        assertThat(bungee.getCapacity()).isEqualTo(1);
+        assertThat(bungee.getParticipantsSize()).isEqualTo(1);
     }
 
     @Test
@@ -42,19 +42,19 @@ public class BungeeTest {
         bungee.book(customer);
         bungee.book(customer2);
         bungee.cancel(customer2);
-        assertThat(bungee.getCapacity()).isEqualTo(1);
+        assertThat(bungee.getParticipantsSize()).isEqualTo(1);
     }
 
     @Test
     public void canBookIfUnderEighteen() {
         bungee.book(customer);
-        assertThat(bungee.getCapacity()).isEqualTo(1);
+        assertThat(bungee.getParticipantsSize()).isEqualTo(1);
     }
 
     @Test
     public void cannotBookIfUnderEighteen() {
         customer.setCustomerAge(17);
         bungee.book(customer);
-        assertThat(bungee.getCapacity()).isEqualTo(2);
+        assertThat(bungee.getParticipantsSize()).isEqualTo(0);
     }
 }

@@ -24,14 +24,14 @@ public class BasketballTest {
     public void canBookBasketball() {
         basketball.book(customer);
         basketball.book(customer2);
-        assertThat(basketball.getCapacity()).isEqualTo(0);
+        assertThat(basketball.getParticipantsSize()).isEqualTo(2);
     }
 
     @Test
     public void cannotBookBasketballNoMoney() {
         basketball.book(customer);
         basketball.book(customer3);
-        assertThat(basketball.getCapacity()).isEqualTo(1);
+        assertThat(basketball.getParticipantsSize()).isEqualTo(1);
     }
 
     @Test
@@ -39,6 +39,6 @@ public class BasketballTest {
         basketball.book(customer);
         basketball.book(customer2);
         basketball.cancel(customer2);
-        assertThat(basketball.getCapacity()).isEqualTo(1);
+        assertThat(basketball.getParticipantsSize()).isEqualTo(1);
     }
 }

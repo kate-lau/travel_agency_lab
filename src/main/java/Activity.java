@@ -16,7 +16,6 @@ public abstract class Activity implements IBookable{
 
     public void book(Customer customer){
         if (customer.canAfford(price) && hasCapacity()){
-            this.capacity = this.capacity - 1;
             customer.payment(price);
             participants.add(customer);
         }
@@ -24,7 +23,6 @@ public abstract class Activity implements IBookable{
 
     public void cancel(Customer customer){
         customer.refund(price);
-        capacity++;
         participants.remove(customer);
     }
 
@@ -33,11 +31,11 @@ public abstract class Activity implements IBookable{
     }
 
     public boolean hasCapacity() {
-        return (this.capacity > 0);
+        return (this.participants.size() < this.capacity);
     }
 
-    public int getCapacity() {
-        return this.capacity;
+    public int getParticipantsSize() {
+        return this.participants.size();
     }
 
 }
