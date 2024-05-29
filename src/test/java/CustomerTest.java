@@ -51,10 +51,22 @@ public class CustomerTest {
     }
 
     @Test
+    public void cannotMakePayment() {
+        customer1.payment(200);
+        assertThat(customer1.getWallet()).isEqualTo(100);
+    }
+
+    @Test
     public void canGetRefund() {
         customer2.payment(10);
         customer2.refund(10);
         assertThat(customer2.getWallet()).isEqualTo(1000);
+    }
+
+    @Test
+    public void canSetAge() {
+        customer1.setCustomerAge(20);
+        assertThat(customer1.getCustomerAge()).isEqualTo(20);
     }
 
 }

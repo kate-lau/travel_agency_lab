@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BedAndBreakfast implements IBookable {
     private String bnbName;
     private double price;
@@ -10,17 +12,7 @@ public class BedAndBreakfast implements IBookable {
         this.capacity = capacity;
     }
 
-    public String getBnbName() {
-        return bnbName;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public String getLeadCustomer() {
-        return leadCustomer;
-    }
+    // INTERFACE METHODS
 
     public void book(Customer customer) {
         if(customer.canAfford(price) && hasCapacity()) {
@@ -33,12 +25,29 @@ public class BedAndBreakfast implements IBookable {
     public void cancel(Customer customer) {
         customer.refund(price);
         capacity++;
+        setLeadCustomer("");
     }
 
     public boolean hasCapacity() {
-        if(capacity > 0) {
-            return true;
-        }
-        return false;
+        return (capacity > 0);
     }
+
+    // EXTRA METHODS
+
+    public String getBnbName() {
+        return bnbName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setLeadCustomer(String leadCustomer) {
+        this.leadCustomer = leadCustomer;
+    }
+
+    public String getLeadCustomer() {
+        return leadCustomer;
+    }
+
 }

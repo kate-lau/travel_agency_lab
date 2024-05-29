@@ -24,7 +24,8 @@ public class Customer {
     }
 
     public void payment(double amount){
-        this.wallet = wallet - amount;
+        if (canAfford(amount))
+            this.wallet = wallet - amount;
     }
 
     public void refund(double amount) {

@@ -7,6 +7,10 @@ public class TravelAgent {
         this.agencyName = agencyName;
     }
 
+    public String getAgencyName() {
+        return this.agencyName;
+    }
+
     public void makeBooking(Customer customer, IBookable bookable){
         bookable.book(customer);
     }

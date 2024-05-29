@@ -31,6 +31,12 @@ public class BedAndBreakfastTest {
     }
 
     @Test
+    public void canSetLeadCustomer() {
+        bnb.setLeadCustomer("Test");
+        assertThat(bnb.getLeadCustomer()).isEqualTo("Test");
+    }
+
+    @Test
     public void canBook() {
         bnb.book(customer);
         assertThat(bnb.getLeadCustomer()).isEqualTo("Steve");

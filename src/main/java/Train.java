@@ -13,6 +13,24 @@ public class Train implements IBookable {
         trainCustomer = new ArrayList<>();
     }
 
+    // INTERFACE METHODS
+
+    public void book(Customer customer){
+        if (customer.canAfford(price) && hasCapacity()){
+            customer.payment(price);
+            trainCustomer.add(customer);
+        }
+    }
+
+    public void cancel(Customer customer){
+        customer.refund(price);
+        trainCustomer.remove(customer);
+    }
+
+    public boolean hasCapacity(){
+        return (getTrainCustomerSize() < getCapacity());
+    }
+
     // GETTERS
     public String getTrainName() {
         return this.trainName;
@@ -23,27 +41,8 @@ public class Train implements IBookable {
     public int getCapacity() {
         return this.capacity;
     }
-
-    // MORE METHODS
-
-    public boolean hasCapacity(){
-        if (this.getCapacity() > 0){
-            return true;
-        }
-       return false;
+    public int getTrainCustomerSize() {
+        return trainCustomer.size();
     }
 
-    public void book(Customer customer){
-        if (customer.canAfford(price) && hasCapacity()){
-            this.capacity = this.capacity - 1;
-            customer.payment(price);
-            trainCustomer.add(customer);
-        }
-    }
-
-    public void cancel(Customer customer){
-        customer.refund(price);
-        capacity++;
-        trainCustomer.remove(customer);
-    }
 }
